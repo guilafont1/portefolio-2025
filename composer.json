@@ -55,7 +55,8 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ]
+        ],
+        "cache-clear": "php bin/console cache:clear --env=prod --no-debug"
     },
     "conflict": {
         "symfony/symfony": "*"

@@ -27,8 +27,15 @@ WORKDIR /var/www/html
 # Copy application files
 COPY . /var/www/html
 
-# Install dependencies
-RUN composer install --no-dev --optimize-autoloader
+# Set production environment
+ENV APP_ENV=prod
+ENV APP_DEBUG=0
+
+# Install dependencies (skip scripts to avoid cache:clear issues with dev bundles)
+RUN composer install --no-dev --optimize-autoloader --no-scripts
+
+# Install assets manually (cache:clear will be done at runtime)
+RUN php bin/console assets:install public --env=prod --no-debug
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html
