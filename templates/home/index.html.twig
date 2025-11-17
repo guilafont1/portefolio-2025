@@ -1,0 +1,679 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - Julien FONT{% endblock %}
+
+{% block body %}
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7 hero-content">
+                    <div class="mb-3">
+                        <span class="badge bg-white text-primary px-3 py-2 mb-3" style="font-size: 0.9rem; font-weight: 600;">
+                            <i class="bi bi-lightning-charge-fill me-2"></i>Développeur Fullstack
+                        </span>
+                    </div>
+                    <h1>Salut, moi c'est <span style="color: #fbbf24;">Julien</span> 👋</h1>
+                    <p class="lead" style="font-size: 1.3rem; line-height: 1.6;">
+                        Je suis développeur fullstack à Lyon — j'aime créer des solutions utiles, élégantes et surtout… qui marchent.
+                    </p>
+                    <p class="mb-4" style="opacity: 0.95; font-size: 1.1rem; line-height: 1.7;">
+                        J'adore <strong>Symfony</strong> pour sa rigueur, et je m'amuse beaucoup à intégrer de l'<strong>IA</strong> dans mes projets — surtout quand ça me simplifie la vie 😄<br>
+                        En alternance chez <a href="https://www.kooreo.fr/" target="_blank" rel="noopener noreferrer" class="text-white text-decoration-underline fw-bold">KOOREO</a> et Master ISI à l'<a href="https://www.epsi.fr/" target="_blank" rel="noopener noreferrer" class="text-white text-decoration-underline">EPSI Lyon</a>
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#about" class="btn btn-primary">
+                            <i class="bi bi-arrow-down-circle me-2"></i>Découvrir mon parcours
+                        </a>
+                        <a href="{{ path('projects') }}" class="btn btn-outline-light">
+                            <i class="bi bi-code-slash me-2"></i>Mes projets
+                        </a>
+                    </div>
+                    <div class="mt-5 d-flex gap-4">
+                        <div>
+                            <div class="d-flex align-items-center text-white" style="opacity: 0.9;">
+                                <i class="bi bi-geo-alt-fill me-2"></i>
+                                <span>Lyon, France</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="d-flex align-items-center text-white" style="opacity: 0.9;">
+                                <i class="bi bi-briefcase-fill me-2"></i>
+                                <a href="https://www.kooreo.fr/" target="_blank" rel="noopener noreferrer" class="text-white text-decoration-none">
+                                    <span>KOOREO</span> <i class="bi bi-box-arrow-up-right ms-1" style="font-size: 0.7rem;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 text-center hero-content">
+                    <div class="hero-visual">
+                        <div class="floating-card" style="animation: float 6s ease-in-out infinite;">
+                            <div class="card border-0 shadow-lg overflow-hidden" style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 20px;">
+                                <div class="card-body p-4 text-white">
+                                    <div id="hero-profile-container">
+                                        <img src="{{ asset('images/profile.jpg') }}" alt="Julien FONT" class="rounded-circle border border-3 border-white shadow-lg mb-3 hero-profile-img" style="width: 120px; height: 120px; object-fit: cover;" onerror="this.style.display='none'; document.getElementById('hero-profile-icon').style.display='flex';">
+                                        <div id="hero-profile-icon" class="rounded-circle border border-3 border-white shadow-lg mb-3 d-none align-items-center justify-content-center bg-white bg-opacity-20" style="width: 120px; height: 120px; margin: 0 auto;">
+                                            <i class="bi bi-person-circle text-white" style="font-size: 3rem; opacity: 0.9;"></i>
+                                        </div>
+                                    </div>
+                                    <h5 class="mt-2 mb-1">Fullstack Dev</h5>
+                                    <p class="mb-0 opacity-75" style="font-size: 0.85rem; font-style: italic;">J'aime créer des applis rapides et utiles</p>
+                                    <p class="mb-0 opacity-75 mt-1" style="font-size: 0.75rem;">Symfony • IoT • IA</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="bg-light">
+        <div class="container">
+            <h2 class="section-title">À propos</h2>
+            
+            <!-- Profile Card -->
+            <div class="row mb-5">
+                <div class="col-lg-10 mx-auto">
+                    <div class="card border-0 shadow-lg overflow-hidden">
+                        <div class="row g-0">
+                            <div class="col-md-4 bg-gradient-primary text-white d-flex align-items-center justify-content-center p-4 position-relative overflow-hidden" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                <div class="text-center position-relative z-index-1">
+                                    <div class="mb-2 position-relative" id="profile-picture-container">
+                                        <img src="{{ asset('images/profile.jpg') }}" alt="Julien FONT" class="rounded-circle border border-4 border-white shadow-lg profile-img" style="width: 140px; height: 140px; object-fit: cover; animation: fadeInUp 0.8s ease;" onerror="this.style.display='none'; document.getElementById('profile-icon').style.display='flex';">
+                                        <div id="profile-icon" class="rounded-circle border border-4 border-white shadow-lg d-none align-items-center justify-content-center bg-white bg-opacity-20" style="width: 140px; height: 140px; margin: 0 auto;">
+                                            <i class="bi bi-person-circle text-white" style="font-size: 4rem; opacity: 0.9;"></i>
+                                        </div>
+                                    </div>
+                                    <h3 class="mb-1" style="font-size: 1.5rem;">Julien FONT</h3>
+                                    <p class="mb-0 opacity-75" style="font-size: 0.95rem;">21 ans</p>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body p-4">
+                                    <h4 class="card-title mb-3">
+                                        <i class="bi bi-code-slash text-primary me-2"></i>
+                                        Développeur Fullstack
+                                    </h4>
+                                    <div class="mb-3">
+                                        <p class="mb-2">
+                                            <i class="bi bi-mortarboard text-primary me-2"></i>
+                                            <strong>Master Informatique & Systèmes d'Information</strong><br>
+                                            <small class="text-muted">
+                                                RNCP35584 – Niveau 7 | 
+                                                <a href="https://www.epsi.fr/" target="_blank" rel="noopener noreferrer" class="text-decoration-none" style="color: #6366f1 !important;">
+                                                    <strong>EPSI Lyon</strong> <i class="bi bi-box-arrow-up-right" style="font-size: 0.7rem;"></i>
+                                                </a>
+                                            </small>
+                                        </p>
+                                        <p class="mb-0">
+                                            <i class="bi bi-briefcase text-primary me-2"></i>
+                                            <strong>Alternance</strong> chez 
+                                            <a href="https://www.kooreo.fr/" target="_blank" rel="noopener noreferrer" class="text-decoration-none" style="color: #6366f1 !important;">
+                                                <strong>KOOREO</strong> <i class="bi bi-box-arrow-up-right" style="font-size: 0.7rem;"></i>
+                                            </a> - Lyon
+                                        </p>
+                                    </div>
+                                                    <div class="d-flex flex-wrap gap-2">
+                                        <span class="badge" style="background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white;">Symfony</span>
+                                        <span class="badge" style="background: linear-gradient(135deg, #06b6d4, #3b82f6); color: white;">IoT</span>
+                                        <span class="badge" style="background: linear-gradient(135deg, #f59e0b, #ef4444); color: white;">IA</span>
+                                        <span class="badge" style="background: linear-gradient(135deg, #8b5cf6, #ec4899); color: white;">Cloud</span>
+                                        <span class="badge" style="background: linear-gradient(135deg, #10b981, #3b82f6); color: white;">Fullstack</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="row mb-5">
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="card text-center border-0 shadow-sm h-100 stats-card">
+                        <div class="card-body">
+                            <i class="bi bi-calendar-check text-primary" style="font-size: 2.5rem;"></i>
+                            <h3 class="mt-3 mb-0">2024</h3>
+                            <p class="text-muted mb-0">Début alternance</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="card text-center border-0 shadow-sm h-100 stats-card">
+                        <div class="card-body">
+                            <i class="bi bi-building text-primary" style="font-size: 2.5rem;"></i>
+                            <h3 class="mt-3 mb-0">
+                                <a href="https://www.kooreo.fr/" target="_blank" rel="noopener noreferrer" class="text-decoration-none" style="color: inherit;">
+                                    KOOREO <i class="bi bi-box-arrow-up-right" style="font-size: 0.8rem;"></i>
+                                </a>
+                            </h3>
+                            <p class="text-muted mb-0">Entreprise actuelle</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="card text-center border-0 shadow-sm h-100 stats-card">
+                        <div class="card-body">
+                            <i class="bi bi-stack text-primary" style="font-size: 2.5rem;"></i>
+                            <h3 class="mt-3 mb-0">Fullstack</h3>
+                            <p class="text-muted mb-0">Backend & Frontend</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="card text-center border-0 shadow-sm h-100 stats-card">
+                        <div class="card-body">
+                            <i class="bi bi-lightning-charge text-primary" style="font-size: 2.5rem;"></i>
+                            <h3 class="mt-3 mb-0">IoT & IA</h3>
+                            <p class="text-muted mb-0">Spécialités</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Current Role - KOOREO -->
+            <div class="row mb-5">
+                <div class="col-lg-12">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-white border-0 pb-0">
+                            <h4 class="mb-0">
+                                <i class="bi bi-briefcase-fill text-primary me-2"></i>
+                                Mon rôle chez KOOREO
+                            </h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="lead mb-4">
+                                Développement et évolution de solutions numériques innovantes liées à l'<strong>IoT</strong>, 
+                                au <strong>cloud</strong> et aux applications métier chez 
+                                <a href="https://www.kooreo.fr/" target="_blank" rel="noopener noreferrer" class="text-decoration-none" style="color: #6366f1 !important;">
+                                    <strong>KOOREO</strong> <i class="bi bi-box-arrow-up-right" style="font-size: 0.8rem;"></i>
+                                </a>.
+                            </p>
+                            
+                            <div class="mb-4">
+                                <h5 class="mb-3">
+                                    <i class="bi bi-box-seam text-primary me-2"></i>
+                                    Produits sur lesquels j'interviens
+                                </h5>
+                                <div class="d-flex flex-wrap gap-3">
+                                    <span class="badge p-3" style="font-size: 1rem; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; border: none;">
+                                        <i class="bi bi-shield-check me-2"></i>CAP CLEAN
+                                    </span>
+                                    <span class="badge p-3" style="font-size: 1rem; background: linear-gradient(135deg, #06b6d4, #3b82f6); color: white; border: none;">
+                                        <i class="bi bi-gear me-2"></i>CAP CONTROL
+                                    </span>
+                                    <span class="badge p-3" style="font-size: 1rem; background: linear-gradient(135deg, #10b981, #3b82f6); color: white; border: none;">
+                                        <i class="bi bi-link-45deg me-2"></i>Kooreo Connect
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Expertise Areas -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4 class="mb-4 text-center">
+                        <i class="bi bi-diagram-3 text-primary me-2"></i>
+                        Domaines d'expertise
+                    </h4>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100 expertise-card card-variant-1">
+                        <div class="card-body text-center p-4">
+                            <div class="expertise-icon mb-3">
+                                <i class="bi bi-search text-primary" style="font-size: 3rem;"></i>
+                            </div>
+                            <h5 class="card-title">Analyse & Conception</h5>
+                            <p class="card-text text-muted small">
+                                Analyse fonctionnelle, étude des cas d'usage, cartographie des flux et audit système
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100 expertise-card card-variant-2">
+                        <div class="card-body text-center p-4">
+                            <div class="expertise-icon mb-3">
+                                <i class="bi bi-code-square text-primary" style="font-size: 3rem;"></i>
+                            </div>
+                            <h5 class="card-title">Développement</h5>
+                            <p class="card-text text-muted small">
+                                Backend Symfony, API REST, modules Flutter, services Node.js
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100 expertise-card card-variant-3">
+                        <div class="card-body text-center p-4">
+                            <div class="expertise-icon mb-3">
+                                <i class="bi bi-cpu text-primary" style="font-size: 3rem;"></i>
+                            </div>
+                            <h5 class="card-title">IoT & Data</h5>
+                            <p class="card-text text-muted small">
+                                Analyse de flux Bluetooth, traitement de données capteurs, standardisation des trames
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100 expertise-card card-variant-1">
+                        <div class="card-body text-center p-4">
+                            <div class="expertise-icon mb-3">
+                                <i class="bi bi-robot text-primary" style="font-size: 3rem;"></i>
+                            </div>
+                            <h5 class="card-title">Intelligence Artificielle</h5>
+                            <p class="card-text text-muted small">
+                                Détection d'anomalies, analyse de tendances, prédiction d'événements
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100 expertise-card card-variant-2">
+                        <div class="card-body text-center p-4">
+                            <div class="expertise-icon mb-3">
+                                <i class="bi bi-speedometer2 text-primary" style="font-size: 3rem;"></i>
+                            </div>
+                            <h5 class="card-title">Performance & Optimisation</h5>
+                            <p class="card-text text-muted small">
+                                Diagnostic performances, optimisation requêtes, réduction temps de réponse
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 shadow-sm h-100 expertise-card card-variant-3">
+                        <div class="card-body text-center p-4">
+                            <div class="expertise-icon mb-3">
+                                <i class="bi bi-shield-check text-primary" style="font-size: 3rem;"></i>
+                            </div>
+                            <h5 class="card-title">Infrastructure & Sécurité</h5>
+                            <p class="card-text text-muted small">
+                                Tailscale, supervision Raspberry Pi, sécurité IoT, CI/CD
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary -->
+            <div class="row mt-5">
+                <div class="col-lg-10 mx-auto">
+                    <div class="alert alert-primary border-0 shadow-sm" role="alert">
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-info-circle-fill me-3" style="font-size: 2rem;"></i>
+                            <div>
+                                <h5 class="alert-heading mb-2">Rôle transversal</h5>
+                                <p class="mb-0">
+                                    Je travaille sur un écosystème complet mêlant <strong>Symfony</strong>, <strong>IoT</strong>, 
+                                    <strong>mobile</strong>, <strong>cloud</strong>, <strong>data</strong>, <strong>IA</strong>, 
+                                    <strong>sécurité</strong> et <strong>optimisation</strong>. 
+                                    Mon rôle couvre l'analyse, la conception, le développement, la performance, 
+                                    l'infrastructure, la documentation et la collaboration d'équipe.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Compétences</h2>
+            <div class="row">
+                {% for category, data in skills %}
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <i class="bi bi-{{ data.icon }} text-primary" style="font-size: 2.5rem;"></i>
+                                    <h4 class="mt-2 mb-3">{{ data.name }}</h4>
+                                </div>
+                                <div>
+                                    {% for skill in data.skills %}
+                                        {% if skill.level != 'beginner' %}
+                                            <div class="mb-3 p-3 rounded" style="background: #f8f9fa; border-left: 3px solid var(--primary-color);">
+                                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                                    <strong class="text-dark">{{ skill.name }}</strong>
+                                                    <span class="badge text-white fw-bold" style="font-size: 0.7rem; background: {% if skill.level == 'expert' %}linear-gradient(135deg, #10b981, #059669){% elseif skill.level == 'advanced' %}linear-gradient(135deg, #6366f1, #4f46e5){% elseif skill.level == 'intermediate' %}linear-gradient(135deg, #f59e0b, #d97706){% else %}linear-gradient(135deg, #6b7280, #4b5563){% endif %};">
+                                                        {{ skill.level == 'expert' ? 'Expert' : (skill.level == 'advanced' ? 'Avancé' : 'Intermédiaire') }}
+                                                    </span>
+                                                </div>
+                                                {% if skill.since is defined %}
+                                                    <div class="mb-1">
+                                                        <small class="text-muted">
+                                                            <i class="bi bi-calendar3 me-1"></i>Depuis {{ skill.since }}
+                                                            {% if skill.context is defined %}
+                                                                <span class="badge bg-light text-dark ms-2" style="font-size: 0.65rem;">{{ skill.context }}</span>
+                                                            {% endif %}
+                                                        </small>
+                                                    </div>
+                                                {% endif %}
+                                                {% if skill.comment is defined %}
+                                                    <p class="mb-0 small text-muted" style="font-style: italic;">{{ skill.comment }}</p>
+                                                {% endif %}
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiences Section -->
+    <section id="experiences" class="bg-light">
+        <div class="container">
+            <h2 class="section-title">Mon parcours</h2>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="timeline">
+                        <!-- Personal milestones -->
+                        <div class="timeline-item">
+                            <div class="card border-0 shadow-sm" style="border-left: 4px solid #f59e0b !important;">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <div>
+                                            <h5 class="mb-1">
+                                                <i class="bi bi-robot text-warning me-2"></i>
+                                                2023 – Premiers essais en IA
+                                            </h5>
+                                        </div>
+                                        <small class="text-muted">2023</small>
+                                    </div>
+                                    <p class="mb-0 text-muted" style="font-style: italic;">
+                                        J'ai cassé 3 projets avant d'y arriver 😅 Mais maintenant je comprends vraiment comment ça marche !
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="card border-0 shadow-sm" style="border-left: 4px solid #ec4899 !important;">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <div>
+                                            <h5 class="mb-1">
+                                                <i class="bi bi-heart-fill text-danger me-2"></i>
+                                                2021 – Découverte de Symfony
+                                            </h5>
+                                        </div>
+                                        <small class="text-muted">2021</small>
+                                    </div>
+                                    <p class="mb-0 text-muted" style="font-style: italic;">
+                                        Coup de cœur direct ! J'ai tout de suite accroché avec la structure et la philosophie du framework.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="card border-0 shadow-sm" style="border-left: 4px solid #10b981 !important;">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <div>
+                                            <h5 class="mb-1">
+                                                <i class="bi bi-code-slash text-success me-2"></i>
+                                                2020 – Premier script Python
+                                            </h5>
+                                        </div>
+                                        <small class="text-muted">2020</small>
+                                    </div>
+                                    <p class="mb-0 text-muted" style="font-style: italic;">
+                                        Mon premier script Python était moche mais fonctionnel. C'est là que j'ai compris que j'aimais vraiment coder.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Professional experiences -->
+                        {% for experience in experiences %}
+                            <div class="timeline-item">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-start mb-3">
+                                            <div>
+                                                <h4 class="mb-1">{{ experience.title }}</h4>
+                                                <h5 class="text-primary mb-1">{{ experience.company }}</h5>
+                                                <p class="text-muted mb-0">
+                                                    <i class="bi bi-geo-alt me-1"></i>{{ experience.location }}
+                                                    {% if experience.type %}
+                                                        <span class="badge bg-secondary ms-2">{{ experience.type }}</span>
+                                                    {% endif %}
+                                                    {% if experience.current %}
+                                                        <span class="badge bg-success ms-2">En cours</span>
+                                                    {% endif %}
+                                                </p>
+                                            </div>
+                                            <div class="text-end">
+                                                <small class="text-muted">
+                                                    {{ experience.start_date }}
+                                                    {% if experience.end_date %}
+                                                        - {{ experience.end_date }}
+                                                    {% else %}
+                                                        - Aujourd'hui
+                                                    {% endif %}
+                                                </small>
+                                            </div>
+                                        </div>
+                                        
+                                        <p class="mb-3">{{ experience.description }}</p>
+                                        
+                                        {% if experience.personal_note is defined %}
+                                            <div class="alert alert-light border-start border-primary border-3 mb-3" style="background: #f8f9fa;">
+                                                <i class="bi bi-chat-quote text-primary me-2"></i>
+                                                <em class="small">{{ experience.personal_note }}</em>
+                                            </div>
+                                        {% endif %}
+                                        
+                                        {% if experience.products|length > 0 %}
+                                            <p class="mb-3">
+                                                <strong>Produits :</strong>
+                                                {% for product in experience.products %}
+                                                    <span class="badge bg-info me-1">{{ product }}</span>
+                                                {% endfor %}
+                                            </p>
+                                        {% endif %}
+                                        
+                                        {% if experience.missions|length > 0 %}
+                                            <h5 class="mt-4 mb-3">Missions principales :</h5>
+                                            {% for mission in experience.missions %}
+                                                <div class="mb-3">
+                                                    <h6 class="text-primary">
+                                                        <i class="bi bi-arrow-right-circle me-2"></i>{{ mission.title }}
+                                                    </h6>
+                                                    {% if mission.details|length > 0 %}
+                                                        <ul class="list-unstyled ms-4">
+                                                            {% for detail in mission.details %}
+                                                                <li class="mb-1">
+                                                                    <i class="bi bi-dot text-muted"></i>{{ detail }}
+                                                                </li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                    {% endif %}
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
+                                        
+                                        {% if experience.technologies|length > 0 %}
+                                            <div class="mt-3">
+                                                <strong>Technologies :</strong>
+                                                {% for tech in experience.technologies %}
+                                                    <span class="badge bg-secondary me-1">{{ tech }}</span>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Preview Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Projets récents</h2>
+            <div class="row">
+                {% for project in projects %}
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ project.title }}</h5>
+                                <p class="card-text">{{ project.description }}</p>
+                                <div class="mb-3">
+                                    {% for tech in project.technologies|slice(0, 3) %}
+                                        <span class="badge bg-primary me-1">{{ tech }}</span>
+                                    {% endfor %}
+                                </div>
+                                <a href="{{ path('project_detail', {slug: project.slug}) }}" class="btn btn-outline-primary">
+                                    Voir le projet <i class="bi bi-arrow-right ms-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="text-center mt-4">
+                <a href="{{ path('projects') }}" class="btn btn-primary">
+                    Voir tous les projets <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Currently Working On Section -->
+    <section id="currently" class="bg-light">
+        <div class="container">
+            <h2 class="section-title">En ce moment, je travaille sur…</h2>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="row g-4">
+                                <div class="col-md-4">
+                                    <div class="text-center p-3 rounded h-100" style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);">
+                                        <i class="bi bi-tools text-primary" style="font-size: 2.5rem;"></i>
+                                        <h5 class="mt-3 mb-2">🔧 Je construis</h5>
+                                        <p class="mb-0 small">Une API IoT en Symfony 7 + MQTT pour améliorer la communication avec nos capteurs</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="text-center p-3 rounded h-100" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+                                        <i class="bi bi-brain text-warning" style="font-size: 2.5rem;"></i>
+                                        <h5 class="mt-3 mb-2">🧠 J'apprends</h5>
+                                        <p class="mb-0 small">Les embeddings IA et le vector search pour améliorer nos systèmes de détection d'anomalies</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="text-center p-3 rounded h-100" style="background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);">
+                                        <i class="bi bi-lightbulb text-secondary" style="font-size: 2.5rem;"></i>
+                                        <h5 class="mt-3 mb-2">🤔 Je réfléchis à</h5>
+                                        <p class="mb-0 small">Créer mon propre composant Symfony réutilisable pour la gestion des capteurs IoT</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub & Code Section -->
+    <section id="code" class="bg-light">
+        <div class="container">
+            <h2 class="section-title">Mon code</h2>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h4 class="mb-3">
+                                        <i class="bi bi-github text-dark me-2"></i>
+                                        Mon GitHub
+                                    </h4>
+                                    <p class="mb-3">
+                                        J'aime partager mon code et apprendre des autres. Mon style ? <strong>PSR-12</strong>, 
+                                        code propre, commentaires utiles, et surtout… qui fonctionne ! 😄
+                                    </p>
+                                    <a href="https://github.com/julienfont" target="_blank" rel="noopener noreferrer" class="btn btn-dark">
+                                        <i class="bi bi-github me-2"></i>Voir mon GitHub
+                                    </a>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <div class="p-4 rounded" style="background: #f8f9fa;">
+                                        <i class="bi bi-code-square text-primary" style="font-size: 4rem;"></i>
+                                        <p class="mt-3 mb-0 small text-muted">Code propre & fonctionnel</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    {% if testimonials is defined and testimonials|length > 0 %}
+    <section id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Ce que disent les autres</h2>
+            <div class="row">
+                {% for testimonial in testimonials %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body p-4">
+                                <div class="mb-3">
+                                    {% for i in 1..testimonial.rating %}
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                    {% endfor %}
+                                </div>
+                                <p class="card-text mb-3" style="font-style: italic; line-height: 1.7;">
+                                    "{{ testimonial.content }}"
+                                </p>
+                                <div class="border-top pt-3">
+                                    <strong class="d-block">{{ testimonial.author }}</strong>
+                                    <small class="text-muted">
+                                        {{ testimonial.role }}
+                                        {% if testimonial.company %}
+                                            • {{ testimonial.company }}
+                                        {% endif %}
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+{% endblock %}
+

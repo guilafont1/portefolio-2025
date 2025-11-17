@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: portfolio_php
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "8000:80"
+    environment:
+      - APP_ENV=dev
+      - APP_SECRET=${APP_SECRET:-your-secret-key-change-this}
+      - MAILER_DSN=${MAILER_DSN:-null://null}
+    networks:
+      - portfolio_network
+
+networks:
+  portfolio_network:
+    driver: bridge
+

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Projets - Julien FONT{% endblock %}
+
+{% block body %}
+    <section class="bg-light" style="padding-top: 120px;">
+        <div class="container">
+            <h1 class="section-title">Mes Projets</h1>
+            <div class="row">
+                {% for project in projects %}
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ project.title }}</h5>
+                                <p class="card-text">{{ project.description }}</p>
+                                <div class="mb-3">
+                                    {% for tech in project.technologies %}
+                                        <span class="badge bg-primary me-1">{{ tech }}</span>
+                                    {% endfor %}
+                                </div>
+                                <div class="mb-3">
+                                    <small class="text-muted">
+                                        <i class="bi bi-calendar me-1"></i>{{ project.date }}
+                                        <span class="badge bg-{{ project.status == 'En cours' ? 'success' : 'secondary' }} ms-2">
+                                            {{ project.status }}
+                                        </span>
+                                    </small>
+                                </div>
+                                <a href="{{ path('project_detail', {slug: project.slug}) }}" class="btn btn-outline-primary">
+                                    Voir les détails <i class="bi bi-arrow-right ms-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+

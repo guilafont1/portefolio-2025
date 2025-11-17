@@ -1,0 +1,20 @@
+home:
+    path: /
+    controller: App\Controller\HomeController::index
+    methods: [GET]
+
+projects:
+    path: /projets
+    controller: App\Controller\ProjectController::index
+    methods: [GET]
+
+project_detail:
+    path: /projets/{slug}
+    controller: App\Controller\ProjectController::show
+    methods: [GET]
+
+contact:
+    path: /contact
+    controller: App\Controller\ContactController::index
+    methods: [GET, POST]
+
