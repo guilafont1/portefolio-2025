@@ -39,10 +39,13 @@ COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Create cache and log directories with proper permissions
-RUN mkdir -p var/cache var/log && \
+RUN mkdir -p var/cache/prod var/log && \
     chown -R www-data:www-data /var/www/html && \
     chmod -R 755 /var/www/html && \
-    chmod -R 775 var/cache var/log
+    chmod -R 777 var/cache var/log
+
+# Copy PHP-FPM configuration
+COPY docker/php-fpm.conf /usr/local/etc/php-fpm.d/www.conf
 
 # Copy nginx configuration
 COPY docker/nginx.conf /etc/nginx/sites-available/default
