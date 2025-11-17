@@ -38,9 +38,11 @@ RUN composer install --no-dev --optimize-autoloader --no-scripts
 COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-# Set permissions
-RUN chown -R www-data:www-data /var/www/html
-RUN chmod -R 755 /var/www/html
+# Create cache and log directories with proper permissions
+RUN mkdir -p var/cache var/log && \
+    chown -R www-data:www-data /var/www/html && \
+    chmod -R 755 /var/www/html && \
+    chmod -R 775 var/cache var/log
 
 # Copy nginx configuration
 COPY docker/nginx.conf /etc/nginx/sites-available/default

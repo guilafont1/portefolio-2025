@@ -1,7 +1,11 @@
 #!/bin/bash
 set -e
 
-# Wait for services to be ready (if needed)
+# Create necessary directories with proper permissions
+mkdir -p var/cache var/log
+chown -R www-data:www-data var/
+chmod -R 775 var/
+
 # Install assets if not already done
 php bin/console assets:install public --env=prod --no-debug --symlink || true
 
