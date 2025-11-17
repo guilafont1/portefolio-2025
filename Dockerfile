@@ -34,8 +34,9 @@ ENV APP_DEBUG=0
 # Install dependencies (skip scripts to avoid cache:clear issues with dev bundles)
 RUN composer install --no-dev --optimize-autoloader --no-scripts
 
-# Install assets manually (cache:clear will be done at runtime)
-RUN php bin/console assets:install public --env=prod --no-debug
+# Copy entrypoint script
+COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html
@@ -50,6 +51,6 @@ COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 # Expose port
 EXPOSE 80
 
-# Start supervisor
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+# Use entrypoint script
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
