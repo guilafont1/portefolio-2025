@@ -55,26 +55,42 @@ return [
     ],
     [
         'slug' => 'kooreo-ecosystem',
-        'title' => 'Écosystème KOOREO - IoT & Cloud',
-        'description' => 'Développement et évolution de solutions numériques liées à l\'IoT, au cloud et aux applications métier. Intervention sur les produits CAP CLEAN, CAP CONTROL et Kooreo Connect.',
-        'long_description' => 'Dans le cadre de mon alternance chez KOOREO, je travaille sur un écosystème complet mêlant Symfony, IoT, mobile, cloud, data, IA, sécurité et optimisation. Mon rôle est transversal : analyse, conception, développement, performance, infrastructure, documentation et collaboration d\'équipe.',
-        'technologies' => ['Symfony', 'PHP', 'Flutter', 'Node.js', 'Docker', 'Bluetooth', 'IoT', 'IA', 'Cloud'],
+        'title' => 'Écosystème KOOREO - Applications Métier',
+        'description' => 'Développement full-stack d\'applications web et mobiles pour la digitalisation des opérations terrain. Suite Cap Series : CAP SERV, CAP CLEAN, CAP CONTROL, CAP TRACK, CAP TIME.',
+        'long_description' => 'Alternance de deux ans chez KOOREO sur la suite Cap Series, écosystème d\'applications web (Symfony 7) et mobiles (Flutter) pour digitaliser les opérations terrain. Responsable du développement web de CAP SERV : modélisation Doctrine ORM, API REST sécurisée (JWT), interfaces dynamiques JavaScript ES6, gestion complète des ordres d\'intervention avec système de rôles avancé, planning interactif, génération PDF automatique, et gestion documentaire. Refonte complète de CAP CONTROL (100%) et CAP TRACK (80%) : nouveau template unifié pour toute la suite, modules de cartographie interactive (géolocalisation, visualisation géographique), et modernisation des interfaces. Participation aux tests Flutter, réunions clients (validation fonctionnelle avec le client), et gestion de projet agile (Jira, sprints de deux semaines, Git). Progression de débutant à développeur autonome sur projet de production.',
+        'technologies' => ['Symfony 7', 'PHP 8+', 'JavaScript ES6', 'Doctrine ORM', 'MySQL', 'PostgreSQL', 'Flutter', 'Twig', 'Jira', 'Git', 'GitHub Actions'],
         'image' => '/images/projects/kooreo.jpg',
         'date' => '2024-2026',
         'status' => 'En cours',
         'link' => 'https://www.kooreo.fr/',
         'github' => null,
-        'my_role' => 'Développeur Fullstack - Je refactorise les APIs, optimise les traitements de données IoT, et développe des prototypes IA pour la détection d\'anomalies.',
-        'achievement' => 'J\'ai refactorisé la partie IoT pour réduire les temps de réponse de 40%. J\'ai aussi mis en place un système de détection d\'anomalies qui alerte automatiquement en cas de problème sur les capteurs.',
-        'learned' => 'J\'ai appris énormément sur l\'architecture IoT, le traitement de flux de données en temps réel, et l\'intégration d\'IA dans des systèmes de production. La gestion de la connectivité Bluetooth et la standardisation des trames, c\'est plus complexe que ça en a l\'air !',
-        'improvements' => 'Je voudrais améliorer la scalabilité du système de traitement des données. Aussi, je réfléchis à créer un composant Symfony réutilisable pour la gestion des capteurs IoT.',
+        'my_role' => 'Développeur Fullstack sur une période de deux ans, avec responsabilité principale sur le développement web de CAP SERV.
+
+Backend & API : Conception et modélisation du modèle de données (Doctrine ORM, relations complexes), développement d\'API REST sécurisées (rôles, permissions, JWT), gestion complète des bases de données relationnelles (MySQL/PostgreSQL, migrations).
+
+Frontend & UX : Développement d\'interfaces dynamiques (JavaScript ES6, importmap), intégration de composants interactifs (planning, upload, génération PDF), refonte UI complète et mise en place d\'un template unifié pour la suite Cap Series.
+
+Transversal : Participation aux tests Flutter, réunions clients et gestion de projet agile, autonomie croissante jusqu\'à responsabilité complète sur des modules entiers.',
+        'achievement' => 'Livraison complète de CAP SERV en production (application métier d\'interventions)
+
+Refonte totale de CAP CONTROL (100%) et partielle de CAP TRACK (80%)
+
+Mise en place d\'un template unifié pour l\'ensemble de la suite Cap Series
+
+Modules cartographiques et interfaces modernisées opérationnelles
+
+Autonomie complète sur modules critiques validée par relectures techniques',
+        'learned' => 'Cette alternance m\'a permis de travailler sur une architecture Symfony 7 complète en environnement de production, avec des enjeux réels de maintenabilité, sécurité et évolutivité. Architecture MVC, Doctrine ORM avec relations avancées, API REST sécurisées (JWT), logique métier complexe. Autonomie en PHP professionnel et JavaScript ES6 natif (DOM, fetch, importmap, intégration de bibliothèques). Structuration de bases de données relationnelles : modélisation métier, migrations, optimisation. Méthodologie agile professionnelle (Jira, Git) et expérience complète du cycle de vie projet : analyse fonctionnelle avec clients, conception technique, développement, tests, mise en production.',
+        'improvements' => 'Je souhaiterais structurer l\'architecture autour de pratiques de tests systématiques (PHPUnit, Behat) et renforcer l\'automatisation CI/CD pour améliorer la robustesse à long terme de la plateforme. Dockerisation complète de l\'environnement pour standardiser les déploiements et faciliter la scalabilité. À terme, intégration de briques d\'intelligence artificielle (prédiction de retards, chatbot métier, analyse automatique de rapports) pour enrichir fonctionnellement la suite tout en maintenant une architecture modulaire et maintenable.',
         'features' => [
-            'Développement backend Symfony : création et amélioration d\'API',
-            'Travail sur la data et les capteurs : analyse de flux Bluetooth',
-            'Exploration IA appliquée : détection d\'anomalies, analyse de tendances',
-            'Développement multiplateforme : modules Flutter et services Node.js',
-            'Qualité, performance & optimisation : diagnostic et optimisation des performances',
-            'Infrastructure & sécurité : intégration Tailscale, supervision Raspberry Pi'
+            'API REST Symfony 7 sécurisée (JWT, rôles)',
+            'Gestion complète des interventions (CRUD, planning, statuts)',
+            'Interfaces dynamiques JavaScript ES6 (importmap)',
+            'Génération automatique de rapports PDF',
+            'Modules de cartographie (géolocalisation, visualisation)',
+            'Synchronisation web/mobile avec Flutter',
+            'Refonte UI complète CAP CONTROL (100%)',
+            'Méthodologie agile (Jira, Git)'
         ]
     ],
     [

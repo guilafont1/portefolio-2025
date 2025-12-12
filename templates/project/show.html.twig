@@ -6,7 +6,7 @@
     <section class="bg-light" style="padding-top: 30px; padding-bottom: 3rem;">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 mx-auto">
+                <div class="col-lg-10 mx-auto">
                     <nav aria-label="breadcrumb" class="mb-4" style="margin-top: 0;">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ path('home') }}">Accueil</a></li>
@@ -17,112 +17,121 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h1 class="mb-3">{{ project.title }}</h1>
-                            
-                            <div class="d-flex justify-content-between align-items-center mb-4 w-100">
-                                <span class="badge status-badge status-{{ project.status == 'En cours' ? 'ongoing' : 'completed' }}">
-                                    {{ project.status }}
-                                </span>
-                                <span class="text-muted">
-                                    <i class="bi bi-calendar me-1"></i>{{ project.date }}
-                                </span>
-                            </div>
+                            <div class="project-content">
+                                <h1 class="project-title">{{ project.title }}</h1>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-3 w-100">
+                            <span class="badge status-badge status-{{ project.status == 'En cours' ? 'ongoing' : 'completed' }}">
+                                {{ project.status }}
+                            </span>
+                            <span class="text-muted">
+                                <i class="bi bi-calendar me-1"></i>{{ project.date }}
+                            </span>
+                        </div>
 
-                            <p class="lead mb-4">{{ project.description }}</p>
+                        <p class="project-summary">{{ project.description }}</p>
+
+                        {% if project.my_role is defined or project.achievement is defined %}
+                            <hr class="project-separator">
 
                             {% if project.my_role is defined %}
-                                <div class="mb-4 p-3 rounded" style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-left: 4px solid var(--primary-color);">
-                                    <h5 class="mb-2">
-                                        <i class="bi bi-person-badge text-primary me-2"></i>Mon rôle
-                                    </h5>
-                                    <p class="mb-0">{{ project.my_role }}</p>
-                                </div>
-                            {% endif %}
-
-                            {% if project.achievement is defined %}
-                                <div class="mb-4 p-3 rounded" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-left: 4px solid #f59e0b;">
-                                    <h5 class="mb-2">
-                                        <i class="bi bi-trophy text-warning me-2"></i>Ce que j'ai accompli
-                                    </h5>
-                                    <p class="mb-0">{{ project.achievement }}</p>
-                                </div>
-                            {% endif %}
-
-                            <div class="mb-4">
-                                <h3>Description détaillée</h3>
-                                <p>{{ project.long_description }}</p>
-                            </div>
-
-                            {% if project.learned is defined %}
-                                <div class="mb-4 p-3 rounded" style="background: #f8f9fa; border-left: 4px solid #10b981;">
-                                    <h5 class="mb-2">
-                                        <i class="bi bi-lightbulb text-success me-2"></i>Ce que j'ai appris
-                                    </h5>
-                                    <p class="mb-0">{{ project.learned }}</p>
-                                </div>
-                            {% endif %}
-
-                            {% if project.improvements is defined %}
-                                <div class="mb-4 p-3 rounded" style="background: #f8f9fa; border-left: 4px solid #8b5cf6;">
-                                    <h5 class="mb-2">
-                                        <i class="bi bi-arrow-up-circle text-secondary me-2"></i>Ce que j'améliorerais aujourd'hui
-                                    </h5>
-                                    <p class="mb-0">{{ project.improvements }}</p>
-                                </div>
-                            {% endif %}
-
-                            {% if project.features|length > 0 %}
-                                <div class="mb-4">
-                                    <h3>Fonctionnalités</h3>
-                                    <ul class="list-unstyled">
-                                        {% for feature in project.features %}
-                                            <li class="mb-2">
-                                                <i class="bi bi-check-circle-fill text-primary me-2"></i>{{ feature }}
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            {% endif %}
-
-                            <div class="mb-4">
-                                <h3>Technologies utilisées</h3>
-                                <div>
-                                    {% for tech in project.technologies %}
-                                        <span class="badge bg-primary me-1 mb-2" style="font-size: 1rem; padding: 0.5rem 1rem;">
-                                            {{ tech }}
-                                        </span>
-                                    {% endfor %}
-                                </div>
-                            </div>
-
-                            {% if project.link or project.github %}
-                                <div class="mb-4">
-                                    <h3>Liens</h3>
-                                    <div>
-                                        {% if project.slug == 'adphone-colmar' %}
-                                            {% if project.link %}
-                                                <a href="{{ project.link }}" target="_blank" class="btn btn-primary me-2">
-                                                    <i class="bi bi-box-arrow-up-right me-1"></i>Voir le projet
-                                                </a>
-                                            {% endif %}
-                                        {% else %}
-                                            <div class="alert alert-info mb-0">
-                                                <i class="bi bi-info-circle me-2"></i>
-                                                Ce projet n'a pas de version publique en production.
-                                            </div>
-                                        {% endif %}
-                                        {% if project.github %}
-                                            <a href="{{ project.github }}" target="_blank" class="btn btn-outline-dark mt-2">
-                                                <i class="bi bi-github me-1"></i>Code source
-                                            </a>
-                                        {% endif %}
+                                <div class="project-section">
+                                    <div class="project-highlight">
+                                        <h4>Rôle & responsabilités</h4>
+                                        <p class="mb-0">{{ project.my_role }}</p>
                                     </div>
                                 </div>
                             {% endif %}
 
-                            <div class="mt-4">
-                                <a href="{{ path('projects') }}" class="btn btn-outline-secondary">
-                                    <i class="bi bi-arrow-left me-1"></i>Retour aux projets
+                            {% if project.achievement is defined %}
+                                <div class="project-section">
+                                    <div class="project-highlight">
+                                        <h4>Résultats & accomplissements</h4>
+                                        <p class="mb-0">{{ project.achievement }}</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+
+                        {% if project.long_description or project.learned is defined or project.improvements is defined %}
+                            <hr class="project-separator">
+                        {% endif %}
+
+                        <div class="project-section">
+                            <h3 class="project-section-title">Description détaillée</h3>
+                            <p class="project-text">{{ project.long_description }}</p>
+                        </div>
+
+                        {% if project.learned is defined %}
+                            <div class="project-section">
+                                <div class="project-highlight">
+                                    <h4>Ce que j'ai appris</h4>
+                                    <p class="mb-0">{{ project.learned }}</p>
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        {% if project.improvements is defined %}
+                            <div class="project-section">
+                                <div class="project-highlight">
+                                    <h4>Ce que j'améliorerais aujourd'hui</h4>
+                                    <p class="mb-0">{{ project.improvements }}</p>
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        {% if project.features|length > 0 or project.technologies|length > 0 %}
+                            <hr class="project-separator">
+                        {% endif %}
+
+                        {% if project.features|length > 0 %}
+                            <div class="project-section">
+                                <h3 class="project-section-title">Fonctionnalités</h3>
+                                <ul class="project-list">
+                                    {% for feature in project.features %}
+                                        <li>{{ feature }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+
+                        <div class="project-section">
+                            <h3 class="project-section-title">Technologies utilisées</h3>
+                            <div>
+                                {% for tech in project.technologies %}
+                                    <span class="tech-tag">{{ tech }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        {% if project.link or project.github %}
+                            <hr class="project-separator">
+                            <div class="project-section">
+                                <h3 class="project-section-title">Liens</h3>
+                                <div>
+                                    {% if project.slug == 'adphone-colmar' %}
+                                        {% if project.link %}
+                                            <a href="{{ project.link }}" target="_blank" class="text-decoration-none" style="color: var(--accent);">
+                                                Voir le projet →
+                                            </a>
+                                        {% endif %}
+                                    {% else %}
+                                        <p class="text-muted mb-0">Ce projet n'a pas de version publique en production.</p>
+                                    {% endif %}
+                                    {% if project.github %}
+                                        <div class="mt-2">
+                                            <a href="{{ project.github }}" target="_blank" class="text-decoration-none" style="color: var(--accent);">
+                                                Code source →
+                                            </a>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endif %}
+
+                            <div class="mt-5">
+                                <a href="{{ path('projects') }}" class="text-decoration-none" style="color: var(--accent);">
+                                    ← Retour aux projets
                                 </a>
                             </div>
                         </div>

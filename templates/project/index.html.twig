@@ -4,7 +4,7 @@
 
 {% block body %}
     <section class="bg-light" style="padding-top: 30px; padding-bottom: 3rem;">
-        <div class="container">
+        <div class="container" style="max-width: 1400px;">
             <h1 class="mb-4" style="margin-top: 0;">Mes Projets</h1>
             <div class="row">
                 {% for project in projects %}
@@ -29,7 +29,7 @@
                                         <span class="badge tech-badge">+{{ project.technologies|length - 4 }}</span>
                                     {% endif %}
                                 </div>
-                                <a href="{{ path('project_detail', {slug: project.slug}) }}" class="btn btn-outline-dark mt-auto">
+                                <a href="{{ path('project_detail', {slug: project.slug}) }}" class="text-decoration-none mt-auto" style="color: var(--accent);">
                                     Voir les détails →
                                 </a>
                             </div>
