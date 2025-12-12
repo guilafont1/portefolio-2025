@@ -11,6 +11,7 @@ return [
         'end_date' => null,
         'current' => true,
         'description' => 'Développement et évolution de solutions numériques liées à l\'IoT, au cloud et aux applications métier.',
+        'project_slug' => 'kooreo-ecosystem',
         'personal_note' => 'Mon premier vrai poste en alternance ! J\'apprends énormément sur l\'IoT et l\'IA, et je me régale à coder tous les jours.',
         'missions' => [
             [
@@ -125,6 +126,7 @@ return [
         'end_date' => '2024',
         'current' => false,
         'description' => 'Développement d\'applications web avec Laravel et Spring Boot.',
+        'project_slug' => 'simonay-maroc',
         'missions' => [
             [
                 'title' => 'Développement Laravel',
@@ -158,6 +160,7 @@ return [
         'end_date' => '2022',
         'current' => false,
         'description' => 'Modernisation du site WordPress de la MJC Duchère.',
+        'project_slug' => 'mjc-duchere',
         'missions' => [
             [
                 'title' => 'Refonte du site',
@@ -180,8 +183,8 @@ return [
         'location' => 'Tassin',
         'type' => 'Emploi',
         'start_date' => '2022',
-        'end_date' => null,
-        'current' => true,
+        'end_date' => '2025-09',
+        'current' => false,
         'description' => 'Travail d\'équipe, relation client, gestion du rythme.',
         'missions' => [
             [

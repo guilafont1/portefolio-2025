@@ -13,12 +13,20 @@ class EducationService
 
     public function getAll(): array
     {
-        // Trier par date (plus récent en premier)
+        // Trier : Master en premier, puis formations en cours, puis par date décroissante
         usort($this->education, function ($a, $b) {
-            $dateA = $a['start_date'];
-            $dateB = $b['start_date'];
+            // Master Expert en premier (même s'il n'est pas encore commencé)
+            $aIsMaster = strpos($a['degree'], 'Master Expert') !== false;
+            $bIsMaster = strpos($b['degree'], 'Master Expert') !== false;
             
-            // Les formations en cours en premier
+            if ($aIsMaster && !$bIsMaster) {
+                return -1;
+            }
+            if (!$aIsMaster && $bIsMaster) {
+                return 1;
+            }
+            
+            // Ensuite les formations en cours
             if ($a['current'] && !$b['current']) {
                 return -1;
             }
@@ -26,7 +34,8 @@ class EducationService
                 return 1;
             }
             
-            return strcmp($dateB, $dateA);
+            // Puis par date décroissante
+            return strcmp($b['start_date'], $a['start_date']);
         });
 
         return $this->education;

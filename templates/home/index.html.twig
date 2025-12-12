@@ -49,17 +49,15 @@
                 <h2 class="mb-4" style="margin-top: 0;">À propos</h2>
 
                 <p>
-                    Étudiant en Bachelor Développement Full-Stack, en poursuite de Master
-                    Informatique et Systèmes d’Information.
+                    Étudiant en Master Expert en informatique et systèmes d'information.
                 </p>
 
                 <p>
-                    Je conçois des applications web et des API, j’intègre des données et des systèmes
-                    connectés (IoT), en adaptant les outils aux besoins du projet.
+                    Je conçois des applications web et des API, j'intègre des données et j'adapte les outils aux besoins du projet.
                 </p>
 
                 <p class="mb-0">
-                    J’accorde de l’importance aux architectures claires, testables et maintenables,
+                    J'accorde de l'importance aux architectures claires, testables et maintenables,
                     avec une attention constante à la qualité et à la fiabilité.
                 </p>
 
@@ -67,7 +65,49 @@
         </div>
     </div>
 </section>
+
 <section style="padding-top: 0.5; padding-bottom: 3rem;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10">
+                <h2 class="mb-4" style="margin-top: 0;">Études</h2>
+
+                {% for edu in education %}
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <div>
+                                <h5 class="mb-1" style="font-family: 'IBM Plex Mono', monospace; font-weight: 500;">
+                                    {{ edu.degree }}
+                                </h5>
+                                <p class="text-muted mb-1">
+                                    {{ edu.school }} • {{ edu.location }}
+                                    {% if edu.company %}
+                                        <span class="text-muted">({{ edu.type }} chez {{ edu.company }})</span>
+                                    {% else %}
+                                        <span class="text-muted">({{ edu.type }})</span>
+                                    {% endif %}
+                                </p>
+                            </div>
+                            <span class="badge status-badge status-{{ edu.current ? 'ongoing' : 'completed' }}">
+                                {% if edu.current %}
+                                    En cours
+                                {% else %}
+                                    {{ edu.start_date }}{% if edu.end_date %} - {{ edu.end_date }}{% endif %}
+                                {% endif %}
+                            </span>
+                        </div>
+                        {% if edu.description %}
+                            <p class="text-muted mb-0">{{ edu.description }}</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-light" style="padding-top: 0.5; padding-bottom: 3rem;">
     <div class="container">
         <h2 class="mb-4" style="margin-top: 0;">Projets sélectionnés</h2>
 
@@ -96,18 +136,47 @@
     </div>
 </section>
 
-<section class="bg-light" style="padding-top: 0.5; padding-bottom: 3rem;">
+<section style="padding-top: 0.5; padding-bottom: 3rem;">
     <div class="container">
-        <h2 class="mb-4" style="margin-top: 0;">Expérience</h2>
+        <div class="row">
+            <div class="col-lg-10">
+                <h2 class="mb-4" style="margin-top: 0;">Expérience</h2>
 
-        <p>
-            Alternant développeur chez <strong>KOOREO</strong>, Lyon.
-        </p>
+                {% for experience in experiences %}
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <div>
+                                <h5 class="mb-1" style="font-family: 'IBM Plex Mono', monospace; font-weight: 500;">
+                                    {{ experience.title }}
+                                </h5>
+                                <p class="text-muted mb-1">
+                                    {{ experience.company }} • {{ experience.location }}
+                                    <span class="text-muted">({{ experience.type }})</span>
+                                </p>
+                            </div>
+                            <span class="badge status-badge status-{{ experience.current ? 'ongoing' : 'completed' }}">
+                                {% if experience.current %}
+                                    En cours
+                                {% else %}
+                                    {{ experience.start_date }}{% if experience.end_date %} - {{ experience.end_date }}{% endif %}
+                                {% endif %}
+                            </span>
+                        </div>
+                        {% if experience.description %}
+                            <p class="text-muted mb-2">{{ experience.description }}</p>
+                        {% endif %}
+                        {% if experience.project_slug is defined and experience.project_slug %}
+                            <a href="{{ path('project_detail', {slug: experience.project_slug}) }}" 
+                               class="text-decoration-none" 
+                               style="color: var(--accent);">
+                                Voir le projet →
+                            </a>
+                        {% endif %}
+                    </div>
+                {% endfor %}
 
-        <p class="mb-0">
-            Développement de solutions liées à l’IoT, aux applications métier
-            et à l’exploitation de données, dans un environnement Symfony.
-        </p>
+            </div>
+        </div>
     </div>
 </section>
 
