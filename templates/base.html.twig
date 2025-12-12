@@ -3,545 +3,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Julien FONT - Développeur Fullstack{% endblock %}</title>
-    <meta name="description" content="Portfolio de Julien FONT, Développeur Fullstack spécialisé en Symfony, IoT, IA et Cloud. Master Informatique & Systèmes d'Information en alternance chez KOOREO.">
-    
-    <!-- Bootstrap 5 CSS -->
+    <title>{% block title %}Julien Font{% endblock %}</title>
+
+    <meta name="description"
+          content="Portfolio de Julien Font, développeur full-stack. Symfony, API, IoT, applications web.">
+
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <!-- Google Fonts -->
+
+    <!-- Fonts (sobres, peu utilisées) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --primary-color: #6366f1;
-            --secondary-color: #8b5cf6;
-            --accent-color: #f59e0b;
-            --dark-color: #0f172a;
-            --light-color: #f8fafc;
-            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            --text-main: #111827;
+            --text-muted: #4b5563;
+            --border-color: #e5e7eb;
+            --accent: #2563eb;
+            --bg-light: #f9fafb;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--dark-color);
-            line-height: 1.7;
-            overflow-x: hidden;
+            font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+            color: var(--text-main);
+            line-height: 1.65;
             background: #ffffff;
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
+        h1, h2, h3, h4, h5 {
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            margin-top: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            color: var(--text-muted);
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
         }
 
         .navbar {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px) saturate(180%);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .navbar-brand {
-            font-weight: 800;
-            font-size: 1.6rem;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-weight: 600;
+            font-family: 'IBM Plex Mono', monospace;
+            color: var(--text-main);
         }
 
         .nav-link {
-            font-weight: 500;
-            color: var(--dark-color) !important;
-            transition: color 0.3s ease;
-            margin: 0 0.5rem;
-        }
-
-        .nav-link:hover {
-            color: var(--primary-color) !important;
-        }
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: var(--gradient-1);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 50%);
-            animation: rotate 20s linear infinite;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
-            animation: pulse 15s ease-in-out infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 0.8s ease;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            letter-spacing: -1px;
-        }
-
-        .hero .lead {
-            font-size: 1.4rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-            animation: fadeInUp 1s ease;
+            color: var(--text-muted);
             font-weight: 400;
         }
 
-        .btn-primary {
-            background: white;
-            color: var(--primary-color);
-            border: none;
-            padding: 1rem 2.5rem;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            animation: fadeInUp 1.2s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(99, 102, 241, 0.1);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .btn-primary:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .btn-outline-light {
-            border: 2px solid white;
-            color: white;
-            padding: 1rem 2.5rem;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-outline-light:hover {
-            background: white;
-            color: var(--primary-color);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        .nav-link:hover {
+            color: var(--text-main);
         }
 
         section {
-            padding: 5rem 0;
-        }
-
-        .section-title {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 4rem;
-            text-align: center;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -1px;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--gradient-1);
-            border-radius: 2px;
+            padding: 4rem 0;
         }
 
         .card {
-            border: none;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow: hidden;
-            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
         }
 
-        .card:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        .project-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid var(--border-color);
+            background: #ffffff;
         }
 
-        /* Variation de design pour certaines cartes */
-        .card-variant-1 {
-            border-radius: 25px 10px 25px 10px;
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
         }
 
-        .card-variant-2 {
-            border-radius: 10px 25px 10px 25px;
+        .status-badge {
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
         }
 
-        .card-variant-3 {
-            border-radius: 20px;
-            border-top: 4px solid var(--primary-color);
+        .status-ongoing {
+            background: #d1fae5;
+            color: #065f46;
         }
 
-        .timeline {
-            position: relative;
-            padding: 2rem 0;
+        .status-completed {
+            background: #e5e7eb;
+            color: #374151;
         }
 
-        .timeline-item {
-            position: relative;
-            padding-left: 3rem;
-            margin-bottom: 3rem;
+        .tech-badge {
+            background: #eff6ff;
+            color: #1e40af;
+            font-size: 0.75rem;
+            font-weight: 400;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
         }
 
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background: var(--primary-color);
-            border: 3px solid white;
-            box-shadow: 0 0 0 3px var(--primary-color);
+        img.rounded {
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-color);
         }
 
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            left: 7px;
-            top: 15px;
-            width: 2px;
-            height: calc(100% + 1rem);
-            background: #e2e8f0;
+        .btn-dark {
+            background: #111827;
+            border-color: #111827;
         }
 
-        .timeline-item:last-child::after {
-            display: none;
+        .btn-outline-dark {
+            border-color: #111827;
+            color: #111827;
         }
 
-        .skill-badge {
-            display: inline-block;
-            padding: 0.6rem 1.2rem;
-            margin: 0.3rem;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            border-radius: 25px;
+        .btn-outline-dark:hover {
+            background: #111827;
+            border-color: #111827;
+            color: #ffffff;
+        }
+
+        .btn-outline-secondary {
+            border-color: var(--border-color);
+            color: var(--text-main);
+        }
+
+        .btn-outline-secondary:hover {
+            background: #111827;
+            border-color: #111827;
+            color: #ffffff;
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 2.5rem 0;
+            margin-top: 4rem;
             font-size: 0.9rem;
-            font-weight: 600;
-            border: 1px solid rgba(99, 102, 241, 0.1);
-            transition: all 0.3s ease;
+            color: var(--text-muted);
         }
 
-        .skill-badge:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.2);
-            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+        footer a {
+            color: var(--text-muted);
+            margin: 0 0.75rem;
         }
 
-        .footer {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
-            padding: 4rem 0 2rem;
-            margin-top: 5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-        }
-
-        .footer a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            margin: 0 1rem;
-            font-size: 1.8rem;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .footer a:hover {
-            color: white;
-            transform: translateY(-5px) scale(1.2);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeInUp 0.6s ease;
-        }
-
-        .expertise-card {
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .expertise-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15) !important;
-        }
-
-        .expertise-icon {
-            transition: transform 0.3s ease;
-        }
-
-        .expertise-card:hover .expertise-icon {
-            transform: scale(1.1);
-        }
-
-        .bg-gradient-primary {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .bg-gradient-primary::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-
-        .stats-card {
-            transition: all 0.3s ease;
-        }
-
-        .stats-card:hover {
-            transform: translateY(-8px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15) !important;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-        }
-
-        .floating-card {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .hero-visual {
-            position: relative;
-        }
-
-        .hero-visual img {
-            transition: transform 0.3s ease;
-        }
-
-        .floating-card:hover img {
-            transform: scale(1.05);
-        }
-
-        .z-index-1 {
-            z-index: 1;
-        }
-
-        #profile-icon, #hero-profile-icon {
-            display: none;
-        }
-
-        .profile-img, .hero-profile-img {
-            display: block;
-        }
-
-        .badge {
-            border-radius: 50px;
-            font-weight: 600;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-
-            .hero .lead {
-                font-size: 1.2rem;
-            }
-
-            .section-title {
-                font-size: 2.2rem;
-            }
-
-            .hero-visual {
-                margin-top: 3rem;
-            }
+        footer a:hover {
+            color: var(--text-main);
         }
     </style>
 
     {% block stylesheets %}{% endblock %}
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="{{ path('home') }}">Julien FONT</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('home') }}#about">À propos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('home') }}#skills">Compétences</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('home') }}#experiences">Expériences</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('projects') }}">Projets</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('contact') }}">Contact</a>
-                    </li>
-                </ul>
-            </div>
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="{{ path('home') }}">Julien Font</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('home') }}#about">À propos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('projects') }}">Projets</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('contact') }}">Contact</a>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <!-- Main Content -->
-    <main>
-        {% block body %}{% endblock %}
-    </main>
+<main>
+    {% block body %}{% endblock %}
+</main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container text-center">
-            <div class="mb-4">
-                <p class="mb-3" style="opacity: 0.9; font-size: 1.1rem;">On discute ? 👋</p>
-                <div>
-                    <a href="mailto:julien.font@example.com" target="_blank" title="Email" class="me-3">
-                        <i class="bi bi-envelope-fill"></i>
-                    </a>
-                    <a href="https://github.com/julienfont" target="_blank" title="GitHub" class="me-3">
-                        <i class="bi bi-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/julien-font-234ba4232" target="_blank" title="LinkedIn" rel="noopener noreferrer">
-                        <i class="bi bi-linkedin"></i>
-                    </a>
-                </div>
-            </div>
-            <p class="mb-0" style="opacity: 0.7; font-size: 0.9rem;">
-                Fait avec <i class="bi bi-heart-fill text-danger"></i> par Julien FONT • {{ "now"|date("Y") }}
-            </p>
+<footer>
+    <div class="container text-center">
+        <p class="mb-2">Julien Font — Développement full-stack</p>
+        <div>
+            <a href="mailto:julien.font@example.com">Email</a>
+            <a href="https://github.com/guilafont1" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/julien-font-234ba4232" target="_blank">LinkedIn</a>
         </div>
-    </footer>
+        <p class="mt-3 mb-0">&copy; {{ "now"|date("Y") }}</p>
+    </div>
+</footer>
 
-    <!-- Bootstrap 5 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Smooth Scroll -->
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+{% block javascripts %}{% endblock %}
 
-    {% block javascripts %}{% endblock %}
 </body>
 </html>
-
